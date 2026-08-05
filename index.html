@@ -1,26 +1,857 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8">
-    <title>Cleia Santos</title>
-    <link rel="icon" href="./favicon.png" type="image/x-icon">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cleia Santos — Portfólio Artístico</title>
+    <meta
+      name="description"
+      content="Portfólio artístico de Cleia Santos — artista da dança, bailarina profissional e modelo fotográfica de Manaus, Amazonas."
+    />
+    <link rel="icon" href="./favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        .responsive {
-            width: 100%;
-            height: auto;
+      :root {
+        --ink: #1a1714;
+        --ink-soft: #3d3832;
+        --paper: #f3efe6;
+        --paper-deep: #e7e0d2;
+        --forest: #1f3d2b;
+        --forest-mid: #2f5a3d;
+        --leaf: #6f8a62;
+        --burgundy: #6b2435;
+        --burgundy-deep: #4a1522;
+        --sand: #c4a574;
+        --sand-soft: #dfc9a3;
+        --white: #fffdf8;
+        --max: 1120px;
+        --section-space: clamp(4.5rem, 10vw, 7.5rem);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Outfit", sans-serif;
+        font-weight: 400;
+        color: var(--ink);
+        background:
+          radial-gradient(ellipse 80% 50% at 10% 0%, rgba(111, 138, 98, 0.14), transparent 55%),
+          radial-gradient(ellipse 60% 40% at 90% 20%, rgba(107, 36, 53, 0.08), transparent 50%),
+          linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 45%, var(--paper) 100%);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      /* —— Nav —— */
+      .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1.25rem;
+        padding: 1.25rem clamp(1.25rem, 4vw, 2.5rem);
+      }
+
+      .nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.88;
+        transition: opacity 0.25s var(--ease);
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        opacity: 1;
+      }
+
+      /* —— Hero —— */
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        display: grid;
+        align-items: end;
+        color: var(--white);
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .hero__media {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+
+      .hero__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 55% 30%;
+        transform: scale(1.06);
+        animation: hero-drift 18s var(--ease) infinite alternate;
+      }
+
+      .hero__veil {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(180deg, rgba(26, 23, 20, 0.25) 0%, rgba(26, 23, 20, 0.15) 35%, rgba(26, 23, 20, 0.78) 100%),
+          linear-gradient(90deg, rgba(31, 61, 43, 0.45) 0%, transparent 55%);
+      }
+
+      .hero__content {
+        width: min(var(--max), 100%);
+        margin: 0 auto;
+        padding: 0 clamp(1.25rem, 4vw, 2.5rem) clamp(2.5rem, 7vw, 4.5rem);
+        animation: rise-in 1s var(--ease) both;
+      }
+
+      .hero__brand {
+        font-family: "Fraunces", serif;
+        font-size: clamp(3.4rem, 12vw, 7.5rem);
+        font-weight: 700;
+        line-height: 0.92;
+        letter-spacing: -0.03em;
+        margin: 0 0 0.85rem;
+        max-width: 12ch;
+      }
+
+      .hero__lead {
+        margin: 0 0 1.75rem;
+        max-width: 28ch;
+        font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+        font-weight: 300;
+        line-height: 1.45;
+        color: rgba(255, 253, 248, 0.9);
+      }
+
+      .hero__roles {
+        display: block;
+        margin-top: 0.35rem;
+        font-size: 0.92rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        opacity: 0.78;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.85rem;
+        padding: 0.7rem 1.35rem;
+        border-radius: 2px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .btn--solid {
+        background: var(--burgundy);
+        color: var(--white);
+      }
+
+      .btn--solid:hover,
+      .btn--solid:focus-visible {
+        background: var(--burgundy-deep);
+      }
+
+      .btn--ghost {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid rgba(255, 253, 248, 0.55);
+      }
+
+      .btn--ghost:hover,
+      .btn--ghost:focus-visible {
+        border-color: var(--white);
+        background: rgba(255, 253, 248, 0.08);
+      }
+
+      /* —— Sections —— */
+      .section {
+        width: min(var(--max), 100%);
+        margin: 0 auto;
+        padding: var(--section-space) clamp(1.25rem, 4vw, 2.5rem);
+      }
+
+      .section__label {
+        margin: 0 0 0.65rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--forest-mid);
+      }
+
+      .section__title {
+        font-family: "Fraunces", serif;
+        font-size: clamp(2rem, 5vw, 3.1rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin: 0 0 1.25rem;
+        color: var(--ink);
+        max-width: 18ch;
+      }
+
+      .section__text {
+        margin: 0;
+        max-width: 52ch;
+        font-size: 1.05rem;
+        color: var(--ink-soft);
+      }
+
+      .section__text + .section__text {
+        margin-top: 1rem;
+      }
+
+      /* Quote */
+      .quote {
+        position: relative;
+        padding-block: clamp(3.5rem, 8vw, 5.5rem);
+      }
+
+      .quote::before {
+        content: "";
+        position: absolute;
+        inset: 10% 0;
+        background: linear-gradient(90deg, transparent, rgba(111, 138, 98, 0.12), transparent);
+        pointer-events: none;
+      }
+
+      .quote blockquote {
+        position: relative;
+        margin: 0;
+        max-width: 38ch;
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+        font-weight: 500;
+        line-height: 1.35;
+        color: var(--forest);
+      }
+
+      .quote cite {
+        display: block;
+        margin-top: 1.5rem;
+        font-family: "Outfit", sans-serif;
+        font-style: normal;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--burgundy);
+      }
+
+      /* Split layouts */
+      .split {
+        display: grid;
+        gap: clamp(1.75rem, 4vw, 3rem);
+        align-items: center;
+      }
+
+      @media (min-width: 820px) {
+        .split {
+          grid-template-columns: 1.05fr 1fr;
+          gap: clamp(2.5rem, 5vw, 4rem);
         }
-        </style>
+
+        .split--flip {
+          grid-template-columns: 1fr 1.05fr;
+        }
+
+        .split--flip .split__media {
+          order: 2;
+        }
+
+        .split--flip .split__body {
+          order: 1;
+        }
+      }
+
+      .split__media {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2px;
+        aspect-ratio: 4 / 5;
+        background: var(--forest);
+        box-shadow: 0 24px 50px -28px rgba(26, 23, 20, 0.45);
+      }
+
+      .split__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s var(--ease);
+      }
+
+      .split__media:hover img {
+        transform: scale(1.03);
+      }
+
+      .split__media--tall {
+        aspect-ratio: 3 / 4;
+      }
+
+      .bio-list {
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .bio-list li {
+        position: relative;
+        padding: 0.7rem 0 0.7rem 1.15rem;
+        border-top: 1px solid rgba(31, 61, 43, 0.15);
+        font-size: 0.98rem;
+        color: var(--ink-soft);
+      }
+
+      .bio-list li:last-child {
+        border-bottom: 1px solid rgba(31, 61, 43, 0.15);
+      }
+
+      .bio-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 1.15rem;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        background: var(--burgundy);
+      }
+
+      /* Experience band */
+      .band {
+        background:
+          linear-gradient(160deg, var(--forest) 0%, #163024 55%, var(--burgundy-deep) 140%);
+        color: var(--white);
+      }
+
+      .band .section__label {
+        color: var(--sand-soft);
+      }
+
+      .band .section__title,
+      .band .section__text {
+        color: var(--white);
+      }
+
+      .band .section__text {
+        opacity: 0.9;
+      }
+
+      .band .split__media {
+        box-shadow: 0 28px 55px -30px rgba(0, 0, 0, 0.55);
+      }
+
+      /* Experience stack */
+      .experiences {
+        display: grid;
+        gap: clamp(3.5rem, 8vw, 5.5rem);
+      }
+
+      .experience__kicker {
+        margin: 0 0 0.4rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--burgundy);
+      }
+
+      .band .experience__kicker {
+        color: var(--sand);
+      }
+
+      /* Contact */
+      .contact {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 15% 30%, rgba(111, 138, 98, 0.28), transparent 40%),
+          radial-gradient(circle at 85% 70%, rgba(196, 165, 116, 0.35), transparent 42%),
+          var(--paper);
+      }
+
+      .contact__grid {
+        display: grid;
+        gap: clamp(2rem, 5vw, 3.5rem);
+        align-items: center;
+      }
+
+      @media (min-width: 820px) {
+        .contact__grid {
+          grid-template-columns: 0.9fr 1.1fr;
+        }
+      }
+
+      .contact__media {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: 2px;
+        max-width: 420px;
+      }
+
+      .contact__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+      }
+
+      .contact-list {
+        list-style: none;
+        margin: 2rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .contact-list a {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.95rem 1.1rem;
+        text-decoration: none;
+        background: rgba(255, 253, 248, 0.72);
+        border: 1px solid rgba(31, 61, 43, 0.12);
+        border-radius: 2px;
+        transition: border-color 0.25s var(--ease), transform 0.25s var(--ease), background 0.25s var(--ease);
+      }
+
+      .contact-list a:hover,
+      .contact-list a:focus-visible {
+        border-color: var(--forest-mid);
+        background: var(--white);
+        transform: translateX(4px);
+      }
+
+      .contact-list svg {
+        flex-shrink: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        stroke: var(--forest);
+        fill: none;
+        stroke-width: 1.6;
+      }
+
+      .contact-list span {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--ink);
+        word-break: break-word;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem) 2.25rem;
+        text-align: center;
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        opacity: 0.7;
+      }
+
+      /* Reveal on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      @keyframes hero-drift {
+        from {
+          transform: scale(1.06) translate3d(0, 0, 0);
+        }
+        to {
+          transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+        }
+      }
+
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .hero__media img,
+        .reveal,
+        .btn,
+        .split__media img,
+        .contact-list a {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+        }
+
+        .reveal {
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
   <body>
-    <img alt="pg1" src="./images/page0.jpg" class="responsive">
-    <img alt="pg2" src="./images/page1.jpg" class="responsive">
-    <img alt="pg3" src="./images/page2.jpg" class="responsive">
-    <img alt="pg4" src="./images/page3.jpg" class="responsive">
-    <img alt="pg5" src="./images/page4.jpg" class="responsive">
-    <img alt="pg6" src="./images/page5.jpg" class="responsive">
-    <img alt="pg7" src="./images/page6.jpg" class="responsive">
-    <img alt="pg8" src="./images/page7.jpg" class="responsive">
-    <img alt="pg9" src="./images/page8.jpg" class="responsive">
+    <header class="hero" id="topo">
+      <nav class="nav" aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#trajetoria">Trajetória</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="hero__media" aria-hidden="true">
+        <img
+          src="./images/crops/hero.jpg"
+          alt=""
+          width="1600"
+          height="1846"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="sr-only">Portfólio artístico</p>
+        <h1 class="hero__brand">Cleia Santos</h1>
+        <p class="hero__lead">
+          Arte que atravessa e é atravessada — da floresta à avenida.
+          <span class="hero__roles">Artista da dança · Bailarina · Modelo fotográfica</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--solid" href="#contato">Entre em contato</a>
+          <a class="btn btn--ghost" href="#trajetoria">Ver trajetória</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section quote reveal" aria-label="Manifesto">
+        <blockquote>
+          “Acredito que a arte é uma manifestação cultural muito ampla, capaz de nos levar a
+          lugares que nunca imaginamos alcançar. Trata-se de usar a arte para tocar as pessoas,
+          ser atravessado por ela e atravessá-la em retorno.”
+          <cite>Cleia Santos</cite>
+        </blockquote>
+      </section>
+
+      <section class="section split reveal" id="sobre">
+        <div class="split__media split__media--tall">
+          <img
+            src="./images/crops/sobre.jpg"
+            alt="Cleia Santos em composição artística com cena de performance ao fundo"
+            width="1200"
+            height="1421"
+            loading="lazy"
+          />
+        </div>
+        <div class="split__body">
+          <p class="section__label">Sobre</p>
+          <h2 class="section__title">Prazer, Cleia!</h2>
+          <p class="section__text">
+            Nortista, manauara de uma raiz muito forte.
+          </p>
+          <ul class="bio-list">
+            <li>Bacharela em Dança pela Universidade do Estado do Amazonas</li>
+            <li>Bailarina na Companhia de Dança no Ballet da Barra de 2007 a 2014</li>
+            <li>
+              Bailarina no Balé Experimental do Corpo de Dança do Amazonas de 2014 a 2017
+            </li>
+            <li>Desde 2018, atua como bailarina do Corpo de Dança do Amazonas</li>
+            <li>Desde 2019, atua como bailarina no Gandhicats Project</li>
+            <li>Desde 2023, atua como modelo fotográfica</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="band" id="trajetoria">
+        <div class="section experiences">
+          <article class="split reveal">
+            <div class="split__media">
+              <img
+                src="./images/crops/cda.jpg"
+                alt="Cleia Santos em pose de dança contemporânea com pintura facial"
+                width="1100"
+                height="1547"
+                loading="lazy"
+              />
+            </div>
+            <div class="split__body">
+              <p class="experience__kicker">Integrante desde 2018</p>
+              <h2 class="section__title">Corpo de Dança do Amazonas (CDA)</h2>
+              <p class="section__text">
+                A CDA é uma companhia de dança <strong>contemporânea</strong> sediada no norte do
+                Brasil, atualmente dirigida por <strong>Mário Nascimento</strong>, uma das maiores
+                referências da dança brasileira. A companhia tem experiências com diversas
+                linguagens artísticas.
+              </p>
+              <p class="section__text">
+                “São anos de muito trabalho e <strong>crescimento artístico</strong>, incluindo
+                trocas com diversos artistas de todo o país. Em nossos trabalhos no CDA,
+                valorizamos profundamente a <strong>diversidade cultural</strong> do norte do país.”
+              </p>
+            </div>
+          </article>
+
+          <article class="split split--flip reveal">
+            <div class="split__media">
+              <img
+                src="./images/crops/parintins.jpg"
+                alt="Cleia Santos caracterizada como bailarina do Boi Bumba Garantido"
+                width="1100"
+                height="1597"
+                loading="lazy"
+              />
+            </div>
+            <div class="split__body">
+              <p class="experience__kicker">Festival Folclórico de Parintins</p>
+              <h2 class="section__title">Bailarina do Boi Bumba Garantido</h2>
+              <p class="section__text">
+                <strong>Desde 2022</strong>, também atua no festival como bailarina pela Cia de
+                dança Gandhicats Project.
+              </p>
+              <p class="section__text">
+                “Dançar no <strong>maior festival artístico</strong> a céu aberto do mundo vai além
+                de experiências artísticas; enriquece não apenas a cultura nortista, mas também meu
+                crescimento na dança. Presenciar tanta <strong>grandiosidade</strong> cultural do
+                meu estado é uma <strong>experiência engrandecedora</strong>.”
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section experiences">
+        <article class="split reveal">
+          <div class="split__media">
+            <img
+              src="./images/crops/mata.jpg"
+              alt="Cleia Santos em cena do espetáculo Mata, com adorno escultural nas costas"
+              width="1100"
+              height="1350"
+              loading="lazy"
+            />
+          </div>
+          <div class="split__body">
+            <p class="experience__kicker">Espetáculo de dança</p>
+            <h2 class="section__title">Mata — Clébio Oliveira</h2>
+            <p class="section__text">
+              “<strong>Minha primeira</strong> montagem no CDA foi um processo de criação muito
+              genuíno e a temática traz muito da nossa cultura, especialmente a cultura indígena.
+              Isso agregou muito ao meu crescimento como artista e também ao público que nos
+              prestigiou. Mata veio para mostrar o lado <strong>não romantizado</strong> dessa
+              cultura, gerando em mim muita identificação e admiração por esse trabalho.”
+            </p>
+          </div>
+        </article>
+
+        <article class="split split--flip reveal">
+          <div class="split__media">
+            <img
+              src="./images/crops/mario.jpg"
+              alt="Cleia Santos em pose dinâmica durante formação em dança contemporânea"
+              width="1100"
+              height="1456"
+              loading="lazy"
+            />
+          </div>
+          <div class="split__body">
+            <p class="experience__kicker">Formação</p>
+            <h2 class="section__title">Curso com Mário Nascimento</h2>
+            <p class="section__text">
+              “Este curso foi <strong>muito enriquecedor</strong> para minha carreira e
+              desenvolvimento como artista. Cheguei a fazê-lo diversas vezes antes mesmo de
+              trabalhar com o Mário. Sua movimentação é <strong>única</strong> e
+              <strong>singular</strong>. Me apaixonei pela sua técnica, e sem dúvida ela faz parte
+              de uma parte <strong>significativa</strong> da minha base na dança contemporânea.”
+            </p>
+          </div>
+        </article>
+
+        <article class="split reveal">
+          <div class="split__media">
+            <img
+              src="./images/crops/salgueiro.jpg"
+              alt="Cleia Santos na comissão de frente do Salgueiro 2024"
+              width="1100"
+              height="1500"
+              loading="lazy"
+            />
+          </div>
+          <div class="split__body">
+            <p class="experience__kicker">Carnaval do Rio</p>
+            <h2 class="section__title">Comissão de Frente — Acadêmicos do Salgueiro 2024</h2>
+            <p class="section__text">
+              Integrei como <strong>pivô</strong> a comissão de frente do
+              <strong>Salgueiro</strong> em 2024, onde tive a oportunidade de ter contato com
+              <strong>Patrick Carvalho</strong>, renomado coreógrafo de comissões de frente no Rio
+              de Janeiro.
+            </p>
+            <p class="section__text">
+              “Fazer parte deste momento único, na avenida do maior desfile de escolas de samba do
+              mundo, foi muito <strong>enriquecedor</strong>, especialmente por se tratar dos povos
+              indígenas. Sinto-me honrada mais uma vez por representar o norte do país. Com certeza,
+              uma das experiências mais <strong>emocionantes</strong>!”
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="contact" id="contato">
+        <div class="section contact__grid reveal">
+          <div class="contact__media">
+            <img
+              src="./images/crops/contato.jpg"
+              alt="Retrato de Cleia Santos com joias artesanais e blusa azul"
+              width="900"
+              height="1440"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <p class="section__label">Contato</p>
+            <h2 class="section__title">Entre em contato comigo</h2>
+            <p class="section__text">
+              Vamos conversar sobre projetos, ensaios, apresentações ou colaborações.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <a href="tel:+5592991645044">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6.5 4.5h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.7a2 2 0 0 1 2-2.2Z"
+                    />
+                  </svg>
+                  <span>(92) 99164-5044</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/cleia.nsds"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                  <span>@cleia.nsds</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:neucicleia.santos@gmail.com">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m4 7 8 7 8-7" />
+                  </svg>
+                  <span>neucicleia.santos@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Cleia Santos · Portfólio artístico</p>
+    </footer>
+
+    <script>
+      const reveals = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+        );
+
+        reveals.forEach((el) => observer.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("is-visible"));
+      }
+    </script>
   </body>
 </html>
